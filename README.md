@@ -7,8 +7,8 @@ This is a self hostable, reverse-engineered API for Quora's Poe that allows acce
 ### Requirements
 To use this API, you will need to have the following cookies:
 
-2. Quora-Formkey: This is obtained by logging in to Quora.com, viewing the page source, and finding the "formkey" dictionary key (Normally line 14). Use its value in the Quora-Formkey field.
-3. Cookie: 'm-b=xxxx' - This is the value of the cookie with the key m-b, which is present in the list of cookies used on Quora.com (not poe.com), you can simply inspect cookies in Chrome to get it.
+1. Quora-Formkey: This is obtained by logging in to Quora.com, viewing the page source, and finding the "formkey" dictionary key (Normally line 14). Use its value in the Quora-Formkey field.
+2. Cookie: 'm-b=xxxx' - This is the value of the cookie with the key m-b, which is present in the list of cookies used on Quora.com (not poe.com), you can simply inspect cookies in Chrome (F12-Application-cookie) to get it.
 ### Setup
 <details>
 <summary>Simple Setup</summary>
@@ -30,7 +30,7 @@ pip install -r requirements.txt
 - Run the API
 
 ```bash
-uvicorn api:app --reload
+uvicorn api:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 - Verify that the API is running by running:
@@ -50,7 +50,7 @@ Access the url given, in your browser to confirm it works. This is your bot serv
 
 ### Example
 ```bash
-curl http://127.0.0.1/chat/capybara -d '{"Cookie: m-b=xxxx" , "formkey: xxxxx", "message":"What is the meaning of life?"}'
+curl http://127.0.0.1/chat/a2 -d '{"bot:a2" , "Cookie:m-b=xxxx" , "formkey:xxxxx", "message":"What is the meaning of life?"}'
 ```
 Response:
 ```json
