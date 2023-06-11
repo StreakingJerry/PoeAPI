@@ -79,9 +79,11 @@ async def chat(bot:str, options: Item):
         set_auth('Quora-Formkey',options.formkey)
         set_auth('Cookie',options.cookie)
         chat_id = load_chat_id_map(options.bot)
-        clear_context(chat_id)
-        send_message(options.message,options.bot,chat_id)
-        reply = get_latest_message(options.bot)
+        if options.message == "clear":
+            clear_context(chat_id)
+        else:
+            send_message(options.message,options.bot,chat_id)
+            reply = get_latest_message(options.bot)
         return JSONResponse(status_code=200, content={"message" : reply, "status":"success", "chat_id":chat_id })
     except Exception as e:
         print(e)

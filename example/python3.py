@@ -6,16 +6,17 @@ Cookie: 'm-b=xxxx' - This is the value of the cookie with the key m-b, which is 
 '''
 cookie = "m-b="
 formkey = ""
-url = "http://localhost:8000/chat/a2"
+bot = "capybara"
+url = "http://localhost:8000/chat/" + bot
 
 msg = "Hi"
 
 data = {
-  "bot":"a2",
+  "bot":bot,
   "cookie":cookie,
   "formkey":formkey,
   "message":msg
 }
 
 response = requests.post(url, json=data)
-print(response.json())
+print(response.json()["message"])
